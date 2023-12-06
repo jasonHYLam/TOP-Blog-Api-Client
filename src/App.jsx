@@ -10,10 +10,11 @@ function App() {
   useEffect(() => {
     fetch('http://localhost:3000/home')
     .then((res) => res.json())
-    .then((data) => () => {
-      setMessage(data.message)
+    .then((data) => 
+      setMessage(data)
+      // setMessage(data.message)
       // setPosts(data.allPosts)
-    })
+    )
     
   }, [])
 
@@ -32,10 +33,11 @@ function App() {
       <Post/>
 
       <div className='App'>
-        <h1>message: {message}</h1>
+        {/* <h1>message: {message}</h1> */}
+
 
         {posts.map(post => {
-          <li>{post}</li>
+          <li>post: {post}</li>
         })}
 
 

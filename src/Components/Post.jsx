@@ -1,6 +1,7 @@
-export function Post() {
+export function Post({ post }) {
     return <div>
-        <h1>This is a post</h1>
+        <h1>{ post.title }</h1>
+        <p>{ post.text }</p>
     </div>
 }
 
