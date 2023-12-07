@@ -11,9 +11,9 @@ function App() {
     fetch('http://localhost:3000/home')
     .then((res) => res.json())
     .then((data) => 
-      setMessage(data)
       // setMessage(data.message)
-      // setPosts(data.allPosts)
+      // setMessage(data.message)
+      setPosts(data.allPosts)
     )
     
   }, [])
@@ -30,14 +30,15 @@ function App() {
   return (
     <>
       <h1>Ho there</h1>
-      <Post/>
 
       <div className='App'>
-        {/* <h1>message: {message}</h1> */}
+        <h1>message: {message}</h1>
 
 
-        {posts.map(post => {
-          <li>post: {post}</li>
+        {console.log(posts)}
+        {posts.map((post) => {
+          // console.log(post)
+          return <Post key={post.id} post={post} />
         })}
 
 
