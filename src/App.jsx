@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Post } from './Components/Post'
+// import { v4 as uuidv4 } from 'uuid';
+
 import './App.css'
 
 function App() {
@@ -10,10 +12,7 @@ function App() {
   useEffect(() => {
     fetch('http://localhost:3000/home')
     .then((res) => res.json())
-    .then((data) => 
-      // setMessage(data.message)
-      // setMessage(data.message)
-      setPosts(data.allPosts)
+    .then((data) => setPosts(data.allPosts)
     )
     
   }, [])
@@ -25,7 +24,6 @@ function App() {
   // }, [])
 
   console.log(message);
-  // console.log(posts);
 
   return (
     <>
@@ -38,7 +36,7 @@ function App() {
         {console.log(posts)}
         {posts.map((post) => {
           // console.log(post)
-          return <Post key={post.id} post={post} />
+          return <Post key={post._id} post={post} />
         })}
 
 
