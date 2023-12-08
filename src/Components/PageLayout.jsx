@@ -4,7 +4,7 @@ export function PageLayout() {
     return (
         <>
             <PageHeader/>
-            <Outlet />
+            <Outlet/>
         
         </>
     )
