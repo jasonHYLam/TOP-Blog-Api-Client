@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import { HomePage } from './Components/HomePage.jsx'
 import { PageLayout } from './Components/PageLayout.jsx'
+import { PostPage } from './Components/PostPage.jsx'
 import { ErrorPage } from './Components/ErrorPage.jsx'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'posts/:postId',
+        element: <PostPage/>
       }
     ],
     errorElement: <ErrorPage/>
