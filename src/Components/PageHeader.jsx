@@ -1,9 +1,10 @@
+// i will need to replace a tag with Link Component
 export function PageHeader() {
     return (
         <>
             <header>
-                <a href="">Home</a>
-                <a href="">Login</a>
+                <a href="/home">Home</a>
+                <a href="/login">Login</a>
             </header>
         </>
     )
