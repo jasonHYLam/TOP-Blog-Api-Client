@@ -21,7 +21,11 @@ const router = createBrowserRouter([
       },
       {
         path: 'posts/:postId',
-        element: <PostPage/>
+        element: <PostPage/>,
+        // I may need try and catch...
+        loader: async ({params}) => {
+          return fetch(`http://localhost:3000/home/${params.postId}`)
+        },
       }
     ],
     errorElement: <ErrorPage/>
