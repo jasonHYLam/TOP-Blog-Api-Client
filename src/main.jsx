@@ -26,6 +26,10 @@ const router = createBrowserRouter([
         loader: async ({params}) => {
           return fetch(`http://localhost:3000/home/${params.postId}`)
         },
+      },
+      {
+        path: 'sign-up',
+        element:,
       }
     ],
     errorElement: <ErrorPage/>
