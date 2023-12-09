@@ -1,4 +1,5 @@
 import { useLoaderData } from "react-router-dom"
+import { Post } from "./Post";
 
 export function PostPage() {
     // should i use useState and useEffect? well i certainly need to fetch the data.
@@ -8,11 +9,7 @@ export function PostPage() {
     return (
 
         <>
-            <p>Hope this works</p>
-
-            <h1>{post.title}</h1>
-            <p>{post.text}</p>
-
+            <Post post={post}/>
             <hr />
             <p>Comments</p>
             {comments.map(comment => {

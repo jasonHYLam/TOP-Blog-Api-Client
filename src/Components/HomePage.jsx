@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Post } from './Post';
+import { Link } from 'react-router-dom';
 
 export function HomePage() {
   const [posts, setPosts] = useState([]);
@@ -17,8 +18,13 @@ export function HomePage() {
             <p>Yo ho, land spotted.</p>
             {posts.map((post) => {
             // console.log(post)
-            return <Post key={post._id} post={post} />
-            })}
+            return (
+              <Link key={post._id} to={`/posts/${post._id}`}>
+                <Post  post={post} />
+              </Link>
+            )  
+          })}
+            
         </>
     )
 }
