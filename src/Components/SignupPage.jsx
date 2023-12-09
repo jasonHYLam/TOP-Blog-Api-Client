@@ -9,6 +9,7 @@ export function SignupPage() {
 
                     <label htmlFor="">Password (min. 5 chars)</label>
                     <input type="password" />
+                    <button type="submit"> Create account</button>
                 </form>
             </main>
         

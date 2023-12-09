@@ -4,10 +4,9 @@ export function PageHeader() {
     return (
         <>
             <header>
-                <Link to={"posts"}>Real Home</Link>
-                <Link to={"/login"}>Real login</Link>
-                <a href="/posts">Home</a>
-                <a href="/login">Login</a>
+                <Link to={"posts"}>Home</Link>
+                <Link to={"/login"}>Login</Link>
+                <Link to={"/sign-up"}>Sign up</Link>
             </header>
         </>
     )
