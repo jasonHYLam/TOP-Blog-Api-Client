@@ -4,9 +4,9 @@ import { HomePage } from './Components/HomePage.jsx'
 import { PageLayout } from './Components/PageLayout.jsx'
 import { PostPage } from './Components/PostPage.jsx'
 import { ErrorPage } from './Components/ErrorPage.jsx'
-import { SignupPage } from './Components/SignupPage.jsx'
+import { SignupPage, action as signupAction } from './Components/SignupPage.jsx'
 // import './index.css'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider, redirect } from 'react-router-dom'
 
 const router = createBrowserRouter([
   {
@@ -28,15 +28,22 @@ const router = createBrowserRouter([
       {
         path: 'sign-up',
         element: <SignupPage/>,
-        action: async ({params, request}) => {
-          let formData = await request.formData();
-          console.log(formData)
+        // action: async ({params, request}) => {
+        //   console.log(request)
+        //   let formData = await request.formData();
+        //   formData = Object.fromEntries(formData)
+        //   console.log(JSON.stringify(formData))
 
-          // return await fetch(`http://localhost:3000/signup`, {
-          //   method: "POST",
-            // body: JSON.stringify()
-          // })
-        }
+        //   await fetch(`http://localhost:3000/signup`, {
+        //     method: "POST",
+        //     headers: {"Content-Type": "application/json"},
+        //     body: JSON.stringify(formData)
+        //   })
+
+        //   return redirect("/posts")
+        // }
+
+        action: signupAction,
       }
     ],
     errorElement: <ErrorPage/>
