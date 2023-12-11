@@ -18,7 +18,7 @@ export async function action({params, request}) {
 
 export function SignupPage() {
 
-    const { register, formState: {errors}, handleSubmit } = useForm();
+    const { register, formState: {errors}, handleSubmit, getValues } = useForm();
 
     console.log(errors)
 
@@ -40,6 +40,7 @@ export function SignupPage() {
                         // required 
                         // minLength={4}
                     />
+                    <p>{errors.username?.message}</p>
 
 
                     <label htmlFor="password">Password (min. 5 chars)</label>
@@ -56,6 +57,7 @@ export function SignupPage() {
                         // required 
                         // minLength={5} 
                     />
+                    <p>{errors.password?.message}</p>
 
                     <label htmlFor="confirmPassword">Confirm password</label>
                     <input 
@@ -65,13 +67,16 @@ export function SignupPage() {
                             minLength: {
                                 value: 5,
                                 message: 'Min. length is 5 characters'
-                            }
+                            },
+                            validate: (val) => {
+                                if (getValues('password') !== val) return "Passwords don't match"}
                         })}
                         // name="confirmPassword" 
                         type="password" 
                         // required 
                         // minLength={5} 
                     />
+                    <p>{errors.confirmPassword?.message}</p>
 
                     <button type="submit"> Create account</button>
                 </Form>
