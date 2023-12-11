@@ -5,15 +5,6 @@ export async function action({params, request}) {
     formData = Object.fromEntries(formData)
     console.log(JSON.stringify(formData))
 
-    // const sentData = await fetch(`http://localhost:3000/signup`, {
-    // method: "POST",
-    // headers: {"Content-Type": "application/json"},
-    // body: JSON.stringify(formData)
-    // })
-    // console.log(sentData)
-
-    // try and do the same with the await version
-    
     fetch(`http://localhost:3000/signup`, {
     method: "POST",
     headers: {"Content-Type": "application/json"},
