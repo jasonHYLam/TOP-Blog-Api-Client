@@ -19,6 +19,27 @@ export async function action({params, request}) {
     return redirect('/posts')
 }
 
+const validate = (values) => {
+    const errors = {};
+    if (!values.username) {
+        errors.username = 'Required';
+    } else if (values.username < 4) {
+        errors.username = 'Must be at least 4 characters';
+    }
+
+    if (!values.password) {
+        errors.password= 'Required';
+    } else if (values.password < 5) {
+        errors.password = 'Must be at least 5 characters';
+    }
+    if (!values.confirmPassword) {
+        errors.confirmPassword = 'Required';
+    } else if (values.confirmPassword < 5) {
+        errors.confirmPassword = 'Must be at least 5 characters';
+    }
+
+}
+
 export function SignupPage() {
 
     const formik = useFormik({
@@ -28,6 +49,7 @@ export function SignupPage() {
             password: '',
             confirmPassword: '',
         },
+        validate,
 
         onSubmit: async (values) => {
             alert(JSON.stringify(values, null, 2))
@@ -43,8 +65,8 @@ export function SignupPage() {
                     <input 
                         name="username" 
                         type="text" 
-                        required 
-                        minLength={4}
+                        // required 
+                        // minLength={4}
                         onChange={formik.handleChange}
                         value={formik.values.username}
                     />
