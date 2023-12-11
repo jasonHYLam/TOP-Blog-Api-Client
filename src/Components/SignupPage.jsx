@@ -26,6 +26,10 @@ export function SignupPage() {
 
                     <label htmlFor="password">Password (min. 5 chars)</label>
                     <input name="password" type="password" required minLength={5} />
+
+                    <label htmlFor="confirmPassword">Confirm password</label>
+                    <input name="confirmPassword" type="password" required minLength={5} />
+
                     <button type="submit"> Create account</button>
                 </Form>
             </main>
