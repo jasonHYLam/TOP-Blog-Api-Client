@@ -1,4 +1,5 @@
-import { Form, redirect } from "react-router-dom"
+import { Form, redirect } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 export async function action({params, request}) {
     let formData = await request.formData();
@@ -17,6 +18,8 @@ export async function action({params, request}) {
 
 export function SignupPage() {
 
+    const { register, } = useForm();
+
     return (
         <>
             <main>
@@ -24,7 +27,10 @@ export function SignupPage() {
                 <Form method="POST" action="/sign-up" >
                     <label htmlFor="username">Username (min. 4 chars)</label>
                     <input 
-                        name="username" 
+                        {...register('username', {
+                            required: true,
+                            minLength: 4
+                        })}
                         type="text" 
                         // required 
                         // minLength={4}
@@ -32,7 +38,11 @@ export function SignupPage() {
 
                     <label htmlFor="password">Password (min. 5 chars)</label>
                     <input 
-                        name="password" 
+                        {...register('passowrd', {
+                            required: true,
+                            minLength: 5
+                        })}
+                        // name="password" 
                         type="password" 
                         // required 
                         // minLength={5} 
@@ -40,7 +50,11 @@ export function SignupPage() {
 
                     <label htmlFor="confirmPassword">Confirm password</label>
                     <input 
-                        name="confirmPassword" 
+                        {...register('confirmPassword', {
+                            required: true,
+                            minLength: 5
+                        })}
+                        // name="confirmPassword" 
                         type="password" 
                         // required 
                         // minLength={5} 
