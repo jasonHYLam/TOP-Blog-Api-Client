@@ -1,8 +1,4 @@
 import { Form, redirect } from "react-router-dom"
-import { useFormik } from "formik";
-import * as yup from "yup";
-
-
 
 export async function action({params, request}) {
     let formData = await request.formData();
@@ -19,61 +15,20 @@ export async function action({params, request}) {
     return redirect('/posts')
 }
 
-const validate = (values) => {
-    const errors = {};
-    if (!values.username) {
-        errors.username = 'Required';
-    } else if (values.username.length < 4) {
-        errors.username = 'Must be at least 4 characters';
-    }
-
-    if (!values.password) {
-        errors.password= 'Required';
-    } else if (values.password.length < 5) {
-        errors.password = 'Must be at least 5 characters';
-    }
-    if (!values.confirmPassword) {
-        errors.confirmPassword = 'Required';
-    } else if (values.confirmPassword.length < 5) {
-        errors.confirmPassword = 'Must be at least 5 characters';
-    }
-
-    return errors;
-
-}
-
 export function SignupPage() {
-
-    const formik = useFormik({
-
-        initialValues: {
-            username: '',
-            password: '',
-            confirmPassword: '',
-        },
-        validate,
-
-        onSubmit: async (values) => {
-            alert(JSON.stringify(values, null, 2))
-        }
-    })
 
     return (
         <>
             <main>
                 <h1>Sign up!</h1>
-                <Form method="POST" action="/sign-up" onSubmit={formik.handleSubmit}>
+                <Form method="POST" action="/sign-up" >
                     <label htmlFor="username">Username (min. 4 chars)</label>
                     <input 
                         name="username" 
                         type="text" 
                         // required 
                         // minLength={4}
-                        onChange={formik.handleChange}
-                        value={formik.values.username}
                     />
-                    {formik.errors.username ? <div>{formik.errors.username}</div> : null}
-
 
                     <label htmlFor="password">Password (min. 5 chars)</label>
                     <input 
@@ -81,10 +36,7 @@ export function SignupPage() {
                         type="password" 
                         // required 
                         // minLength={5} 
-                        onChange={formik.handleChange}
-                        value={formik.values.password}
                     />
-                    {formik.errors.password ? <div>{formik.errors.password }</div> : null}
 
                     <label htmlFor="confirmPassword">Confirm password</label>
                     <input 
@@ -92,10 +44,7 @@ export function SignupPage() {
                         type="password" 
                         // required 
                         // minLength={5} 
-                        onChange={formik.handleChange}
-                        value={formik.values.confirmPassword}
                     />
-                    {formik.errors.confirmPassword ? <div>{formik.errors.confirmPassword}</div> : null}
 
                     <button type="submit"> Create account</button>
                 </Form>
