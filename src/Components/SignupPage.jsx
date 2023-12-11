@@ -1,32 +1,61 @@
-import { Form, redirect } from "react-router-dom";
+import { Form, redirect, useSubmit, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
-export async function action({params, request}) {
-    let formData = await request.formData();
-    formData = Object.fromEntries(formData)
-    console.log(JSON.stringify(formData))
+// export async function action({params, request}) {
+//     try {
+//         let formData = await request.formData();
+//         formData = Object.fromEntries(formData)
+//         console.log(JSON.stringify(formData))
 
-    fetch(`http://localhost:3000/signup`, {
-    method: "POST",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify(formData)
-    })
-    .catch(err => console.err(err))
+//         fetch(`http://localhost:3000/signup`, {
+//         method: "POST",
+//         headers: {"Content-Type": "application/json"},
+//         body: JSON.stringify(formData)
+//         })
+//         console.log('is this done?')
+//         return redirect('/posts')
+//     }
+//     catch(err) {return err}
+// }
 
-    return redirect('/posts')
-}
 
+// export async function submitData(data) {
+//     try {
+//         console.log(data)
+//         console.log(JSON.stringify(data))
+
+//         fetch(`http://localhost:3000/signup`, {
+//         method: "POST",
+//         headers: {"Content-Type": "application/json"},
+//         body: JSON.stringify(data)
+//         })
+//         console.log('is this done?')
+//         return redirect('/posts')
+//     }
+//     catch(err) {return err}
+// }
 export function SignupPage() {
 
     const { register, formState: {errors}, handleSubmit, getValues } = useForm();
+    const navigate = useNavigate();
 
-    console.log(errors)
+    const onSubmit = async (data) => {
+        try {
+            fetch(`http://localhost:3000/signup`, {
+            method: "POST",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify(data)
+            })
+            navigate('/posts')
+        } 
+        catch(err) {return err}
+    }
 
     return (
         <>
             <main>
                 <h1>Sign up!</h1>
-                <Form method="POST" action="/sign-up" onSubmit={handleSubmit(data => console.log(data))}>
+                <Form method="POST" action="/sign-up" onSubmit={handleSubmit(onSubmit)}>
                     <label htmlFor="username">Username (min. 4 chars)</label>
                     <input 
                         {...register('username', {
@@ -37,8 +66,6 @@ export function SignupPage() {
                             }
                         })}
                         type="text" 
-                        // required 
-                        // minLength={4}
                     />
                     <p>{errors.username?.message}</p>
 
@@ -52,10 +79,7 @@ export function SignupPage() {
                                 message: 'Min. length is 5 characters'
                             }
                         })}
-                        // name="password" 
                         type="password" 
-                        // required 
-                        // minLength={5} 
                     />
                     <p>{errors.password?.message}</p>
 
@@ -63,7 +87,6 @@ export function SignupPage() {
                     <input 
                         {...register('confirmPassword', {
                             required: 'Please confirm password',
-                            // minLength: 5
                             minLength: {
                                 value: 5,
                                 message: 'Min. length is 5 characters'
@@ -71,10 +94,7 @@ export function SignupPage() {
                             validate: (val) => {
                                 if (getValues('password') !== val) return "Passwords don't match"}
                         })}
-                        // name="confirmPassword" 
                         type="password" 
-                        // required 
-                        // minLength={5} 
                     />
                     <p>{errors.confirmPassword?.message}</p>
 

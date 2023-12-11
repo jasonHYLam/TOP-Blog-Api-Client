@@ -5,7 +5,8 @@ import { PageLayout } from './Components/PageLayout.jsx'
 import { PostPage } from './Components/PostPage.jsx'
 import { ErrorPage } from './Components/ErrorPage.jsx'
 import { LoginPage } from './Components/LoginPage.jsx'
-import { SignupPage, action as signupAction } from './Components/SignupPage.jsx'
+// import { SignupPage, action as signupAction } from './Components/SignupPage.jsx'
+import { SignupPage, } from './Components/SignupPage.jsx'
 // import './index.css'
 import { createBrowserRouter, RouterProvider, redirect } from 'react-router-dom'
 
@@ -29,7 +30,7 @@ const router = createBrowserRouter([
       {
         path: 'sign-up',
         element: <SignupPage/>,
-        action: signupAction,
+        // action: signupAction,
       },
       {
         path: 'login',
