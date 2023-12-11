@@ -23,20 +23,22 @@ const validate = (values) => {
     const errors = {};
     if (!values.username) {
         errors.username = 'Required';
-    } else if (values.username < 4) {
+    } else if (values.username.length < 4) {
         errors.username = 'Must be at least 4 characters';
     }
 
     if (!values.password) {
         errors.password= 'Required';
-    } else if (values.password < 5) {
+    } else if (values.password.length < 5) {
         errors.password = 'Must be at least 5 characters';
     }
     if (!values.confirmPassword) {
         errors.confirmPassword = 'Required';
-    } else if (values.confirmPassword < 5) {
+    } else if (values.confirmPassword.length < 5) {
         errors.confirmPassword = 'Must be at least 5 characters';
     }
+
+    return errors;
 
 }
 
@@ -70,27 +72,30 @@ export function SignupPage() {
                         onChange={formik.handleChange}
                         value={formik.values.username}
                     />
+                    {formik.errors.username ? <div>{formik.errors.username}</div> : null}
 
 
                     <label htmlFor="password">Password (min. 5 chars)</label>
                     <input 
                         name="password" 
                         type="password" 
-                        required 
-                        minLength={5} 
+                        // required 
+                        // minLength={5} 
                         onChange={formik.handleChange}
                         value={formik.values.password}
                     />
+                    {formik.errors.password ? <div>{formik.errors.password }</div> : null}
 
                     <label htmlFor="confirmPassword">Confirm password</label>
                     <input 
                         name="confirmPassword" 
                         type="password" 
-                        required 
-                        minLength={5} 
+                        // required 
+                        // minLength={5} 
                         onChange={formik.handleChange}
                         value={formik.values.confirmPassword}
                     />
+                    {formik.errors.confirmPassword ? <div>{formik.errors.confirmPassword}</div> : null}
 
                     <button type="submit"> Create account</button>
                 </Form>
