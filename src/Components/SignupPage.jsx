@@ -1,18 +1,27 @@
-import { Form } from "react-router-dom"
+import { Form, redirect } from "react-router-dom"
 
 export async function action({params, request}) {
-    console.log(request)
     let formData = await request.formData();
     formData = Object.fromEntries(formData)
     console.log(JSON.stringify(formData))
 
-    await fetch(`http://localhost:3000/signup`, {
+    // const sentData = await fetch(`http://localhost:3000/signup`, {
+    // method: "POST",
+    // headers: {"Content-Type": "application/json"},
+    // body: JSON.stringify(formData)
+    // })
+    // console.log(sentData)
+
+    // try and do the same with the await version
+    
+    fetch(`http://localhost:3000/signup`, {
     method: "POST",
     headers: {"Content-Type": "application/json"},
     body: JSON.stringify(formData)
     })
+    .catch(err => console.err(err))
 
-
+    return redirect('/posts')
 }
 
 export function SignupPage() {

@@ -28,21 +28,6 @@ const router = createBrowserRouter([
       {
         path: 'sign-up',
         element: <SignupPage/>,
-        // action: async ({params, request}) => {
-        //   console.log(request)
-        //   let formData = await request.formData();
-        //   formData = Object.fromEntries(formData)
-        //   console.log(JSON.stringify(formData))
-
-        //   await fetch(`http://localhost:3000/signup`, {
-        //     method: "POST",
-        //     headers: {"Content-Type": "application/json"},
-        //     body: JSON.stringify(formData)
-        //   })
-
-        //   return redirect("/posts")
-        // }
-
         action: signupAction,
       }
     ],
