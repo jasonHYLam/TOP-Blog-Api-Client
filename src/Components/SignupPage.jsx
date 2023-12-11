@@ -18,29 +18,38 @@ export async function action({params, request}) {
 
 export function SignupPage() {
 
-    const { register, } = useForm();
+    const { register, formState: {errors}, handleSubmit } = useForm();
+
+    console.log(errors)
 
     return (
         <>
             <main>
                 <h1>Sign up!</h1>
-                <Form method="POST" action="/sign-up" >
+                <Form method="POST" action="/sign-up" onSubmit={handleSubmit(data => console.log(data))}>
                     <label htmlFor="username">Username (min. 4 chars)</label>
                     <input 
                         {...register('username', {
-                            required: true,
-                            minLength: 4
+                            required: 'Username is required',
+                            minLength: {
+                                value: 4,
+                                message: 'Min. length is 4 characters'
+                            }
                         })}
                         type="text" 
                         // required 
                         // minLength={4}
                     />
 
+
                     <label htmlFor="password">Password (min. 5 chars)</label>
                     <input 
-                        {...register('passowrd', {
-                            required: true,
-                            minLength: 5
+                        {...register('password', {
+                            required:'Password is required',
+                            minLength: {
+                                value: 5,
+                                message: 'Min. length is 5 characters'
+                            }
                         })}
                         // name="password" 
                         type="password" 
@@ -51,8 +60,12 @@ export function SignupPage() {
                     <label htmlFor="confirmPassword">Confirm password</label>
                     <input 
                         {...register('confirmPassword', {
-                            required: true,
-                            minLength: 5
+                            required: 'Please confirm password',
+                            // minLength: 5
+                            minLength: {
+                                value: 5,
+                                message: 'Min. length is 5 characters'
+                            }
                         })}
                         // name="confirmPassword" 
                         type="password" 
