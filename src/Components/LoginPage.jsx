@@ -15,6 +15,9 @@ export async function action({params, request}) {
     // return redirect('/posts')
 }
 
+// should i reimplement react-hook-form for FE form validation?
+// how would i do the validation and handle incorrect user credentials, and show them?
+// cus that's a backend operation
 export function LoginPage() {
     return (
         <>

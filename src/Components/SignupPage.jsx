@@ -1,6 +1,8 @@
 import { Form, redirect, useSubmit, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
+// this is former function that is action callback for router.
+// not used because action callback does not seem to work with FE form validation
 // export async function action({params, request}) {
 //     try {
 //         let formData = await request.formData();
@@ -19,6 +21,8 @@ import { useForm } from "react-hook-form";
 // }
 
 
+// this is another former function that is action callback for router.
+// not used because action callback does not seem to work with FE form validation
 // export async function submitData(data) {
 //     try {
 //         console.log(data)
@@ -39,6 +43,8 @@ export function SignupPage() {
     const { register, formState: {errors}, handleSubmit, getValues } = useForm();
     const navigate = useNavigate();
 
+    // current function when submitting form and successful FE form validation
+    // fetch POST request made to backend to post user data, and then redirect to homepage via navigate()
     const onSubmit = async (data) => {
         try {
             fetch(`http://localhost:3000/signup`, {
@@ -51,10 +57,13 @@ export function SignupPage() {
         catch(err) {return err}
     }
 
+    // form makes use of react-hook-form for FE form validation. 
+    // allows error messages to be easily displayed.
     return (
         <>
             <main>
                 <h1>Sign up!</h1>
+                
                 <Form method="POST" action="/sign-up" onSubmit={handleSubmit(onSubmit)}>
                     <label htmlFor="username">Username (min. 4 chars)</label>
                     <input 
