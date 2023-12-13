@@ -1,4 +1,5 @@
-import { Form, redirect } from "react-router-dom"
+import { Form, useNavigate } from "react-router-dom"
+import { useForm } from "react-hook-form";
 
 export async function action({params, request}) {
     let formData = await request.formData();
@@ -19,16 +20,52 @@ export async function action({params, request}) {
 // how would i do the validation and handle incorrect user credentials, and show them?
 // cus that's a backend operation
 export function LoginPage() {
+
+    const { register, formState: {errors}, handleSubmit, getValues } = useForm();
+    const navigate = useNavigate();
+
+    const onSubmit = async (data) => {
+        try {
+            console.log('good day sunshine')
+            fetch('http://localhost:3000/login', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(data)
+            })
+            console.log('fetched as per your bidding, now redirecting...')
+            navigate('/posts');
+            
+        }
+        catch(err) {
+            console.log(err)
+        }
+    }
+
     return (
         <>
             <main>
                 <h1>Log in</h1>
-                <Form method="POST" action="/login">
+                <Form method="POST" action="/login" onSubmit={handleSubmit(onSubmit)}>
                     <label htmlFor="username">Username</label>
-                    <input name="username" type="text" required minLength={4}  />
+                    <input 
+                        type="text" 
+                        {...register('username', {
+                            required: 'Username is required',
+                        })
+                        }
+                    />
+                    <p>{errors.username?.message}</p>
 
                     <label htmlFor="password">Password</label>
-                    <input name="password" type="password" required minLength={5} />
+                    <input 
+                        type="text" 
+                        {...register('password', {
+                            required: 'Password is required',
+                        })
+                        }
+                    />
+                    <p>{errors.password?.message}</p>
+
                     <button type="submit"> Login</button>
                 </Form>
             </main>
