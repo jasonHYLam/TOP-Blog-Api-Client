@@ -6,6 +6,8 @@ export async function action({params, request}) {
     formData = Object.fromEntries(formData)
     console.log(JSON.stringify(formData))
 
+    // fetch for non react-hook-form set up
+
     // fetch(`http://localhost:3000/signup`, {
     // method: "POST",
     // headers: {"Content-Type": "application/json"},
@@ -16,7 +18,7 @@ export async function action({params, request}) {
     // return redirect('/posts')
 }
 
-// should i reimplement react-hook-form for FE form validation?
+// using react-hook-form for FE form validation?
 // how would i do the validation and handle incorrect user credentials, and show them?
 // cus that's a backend operation
 export function LoginPage() {
@@ -37,6 +39,7 @@ export function LoginPage() {
             
         }
         catch(err) {
+            console.log('is there an error perhaps')
             console.log(err)
         }
     }
