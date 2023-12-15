@@ -25,7 +25,7 @@ export async function action({params, request}) {
 export function LoginPage() {
 
     const { register, formState: {errors}, handleSubmit, getValues } = useForm();
-    const [backendErrors, setBackendErrors] = useState({});
+    const [backendErrors, setBackendErrors] = useState('');
 
     const navigate = useNavigate();
 
@@ -42,10 +42,13 @@ export function LoginPage() {
                 console.log(res)
                 console.log(res.success)
                 if (res.success === false ) setBackendErrors(res.message)
+
+                else {
+                    console.log('fetched as per your bidding, now redirecting...')
+                    navigate('/posts');
+                }
             })
 
-            console.log('fetched as per your bidding, now redirecting...')
-            navigate('/posts');
             
         }
         catch(err) {
@@ -68,7 +71,6 @@ export function LoginPage() {
                         }
                     />
                     <p>{errors.username?.message}</p>
-                    {backendErrors === "Incorrect username" ? <p>{backendErrors}</p> : null}
                    
 
                     <label htmlFor="password">Password</label>
@@ -80,7 +82,7 @@ export function LoginPage() {
                         }
                     />
                     <p>{errors.password?.message}</p>
-                    {backendErrors === "Incorrect password" ? <p>{backendErrors}</p> : null}
+                    {backendErrors !== "" ? <p>{backendErrors}</p> : null}
 
                     <button type="submit"> Login</button>
                 </Form>
