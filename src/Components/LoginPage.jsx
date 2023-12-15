@@ -1,5 +1,6 @@
 import { Form, useNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 
 export async function action({params, request}) {
     let formData = await request.formData();
@@ -24,6 +25,8 @@ export async function action({params, request}) {
 export function LoginPage() {
 
     const { register, formState: {errors}, handleSubmit, getValues } = useForm();
+    const [backendErrors, setBackendErrors] = useState({});
+
     const navigate = useNavigate();
 
     const onSubmit = async (data) => {
@@ -34,6 +37,13 @@ export function LoginPage() {
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(data)
             })
+            .then(res => res.json())
+            .then(res => {
+                console.log(res)
+                console.log(res.success)
+                if (res.success === false ) setBackendErrors(res.message)
+            })
+
             console.log('fetched as per your bidding, now redirecting...')
             navigate('/posts');
             
@@ -58,6 +68,8 @@ export function LoginPage() {
                         }
                     />
                     <p>{errors.username?.message}</p>
+                    {backendErrors === "Incorrect username" ? <p>{backendErrors}</p> : null}
+                   
 
                     <label htmlFor="password">Password</label>
                     <input 
@@ -68,6 +80,7 @@ export function LoginPage() {
                         }
                     />
                     <p>{errors.password?.message}</p>
+                    {backendErrors === "Incorrect password" ? <p>{backendErrors}</p> : null}
 
                     <button type="submit"> Login</button>
                 </Form>
