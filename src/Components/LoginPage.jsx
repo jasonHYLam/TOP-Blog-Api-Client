@@ -35,16 +35,16 @@ export function LoginPage() {
             fetch('http://localhost:3000/login', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(data)
+                body: JSON.stringify(data),
+                credentials: 'include',
             })
             .then(res => res.json())
             .then(res => {
-                console.log(res)
-                console.log(res.success)
                 if (res.success === false ) setBackendErrors(res.message)
 
                 else {
                     console.log('fetched as per your bidding, now redirecting...')
+                    console.log(res)
                     navigate('/posts');
                 }
             })
