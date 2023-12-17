@@ -34,7 +34,10 @@ export function LoginPage() {
             console.log('good day sunshine')
             fetch('http://localhost:3000/login', {
                 method: 'POST',
-                headers: {'Content-Type': 'application/json'},
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Credentials': true
+                },
                 body: JSON.stringify(data),
                 credentials: 'include',
             })
