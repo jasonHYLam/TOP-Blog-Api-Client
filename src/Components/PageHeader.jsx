@@ -7,6 +7,7 @@ export function PageHeader() {
                 <Link to={"posts"}>Home</Link>
                 <Link to={"/login"}>Login</Link>
                 <Link to={"/sign-up"}>Sign up</Link>
+                <Link to={"/logout"}>Log out</Link>
             </header>
         </>
     )

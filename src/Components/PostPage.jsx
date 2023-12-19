@@ -12,8 +12,6 @@ export function PostPage() {
     // however i do need to verify...
     const {post, comments, user} = useLoaderData();
 
-    console.log(post)
-    console.log(comments)
     console.log('tryna find loggedInUser')
     console.log(user)
 
@@ -24,7 +22,6 @@ export function PostPage() {
             <hr />
             {user ? 
             <>
-            
             <Form method="POST">
                 <label htmlFor="comment"></label>
                 {/* <input type="text" /> */}
