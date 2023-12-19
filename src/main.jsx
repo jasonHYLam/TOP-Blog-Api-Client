@@ -5,10 +5,11 @@ import { PageLayout } from './Components/PageLayout.jsx'
 import { PostPage } from './Components/PostPage.jsx'
 import { ErrorPage } from './Components/ErrorPage.jsx'
 import { LoginPage } from './Components/LoginPage.jsx'
+import { Logout } from './Components/Logout.jsx'
 // import { SignupPage, action as signupAction } from './Components/SignupPage.jsx'
 import { SignupPage, } from './Components/SignupPage.jsx'
 // import './index.css'
-import { createBrowserRouter, RouterProvider, redirect } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider, redirect, useNavigate } from 'react-router-dom'
 
 const router = createBrowserRouter([
   {
@@ -47,6 +48,19 @@ const router = createBrowserRouter([
       {
         path: 'login',
         element: <LoginPage/>,
+      },
+      {
+        path: 'logout',
+        element: <Logout/>,
+        loader: async () => {
+          console.log('should be logging out')
+          // return fetch('http://localhost:3000/logout')
+          fetch('http://localhost:3000/logout')
+          return redirect("/posts")
+        }
+
+
+
       }
     ],
     errorElement: <ErrorPage/>
