@@ -1,4 +1,5 @@
-import { useLoaderData } from "react-router-dom"
+import { useForm } from "react-hook-form";
+import { useLoaderData, Form } from "react-router-dom"
 import { Post } from "./Post";
 import { Comment } from "./Comment";
 
@@ -7,18 +8,27 @@ export function PostPage() {
     // should i use the loader function...?
 
     // however i do need to verify...
-    const {post, comments} = useLoaderData();
+    const {post, comments, user} = useLoaderData();
 
     console.log(post)
     console.log(comments)
-
-    // need to handle if data isn't able to be fetched
-    // is the passportJWT the reason why data wasn't fetched?
+    console.log('tryna find loggedInUser')
+    console.log(user)
 
     return (
         <>
             {/* <Post post={post}/> */}
             <hr />
+            {user ? 
+            <>
+            <form action="">
+                <label htmlFor=""></label>
+            </form>
+            </> 
+            : 
+            <p>Please login to leave a comment.</p>
+            }
+
             <p>Comments</p>
             <textarea name="" id="" cols="30" rows="10"></textarea>
             <button>New Comment</button>
@@ -29,6 +39,7 @@ export function PostPage() {
                     <Comment key={comment._id} comment={comment}/>
                 )
             })} */}
+
 
         </>
     )

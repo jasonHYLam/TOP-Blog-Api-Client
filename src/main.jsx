@@ -23,30 +23,19 @@ const router = createBrowserRouter([
         path: 'posts/:postId',
         element: <PostPage/>,
 
-        loader: 
-        
-        async (params) => {
-
-          await Promise.all([
-            // async ({params}) => {
-              await fetch(
-                `http://localhost:3000/home/${params.postId}`,
-                {
-                  credentials: "include",
-                  headers: {
-                        'Content-Type': 'application/json',
-                        'Access-Control-Allow-Credentials': true
-                    },
-                })
-                // .then(res => res.json())
-                ,
-            // },
-
-            await fetch('http://localhost:3000/home/authenticate')
-            // .then(res => res.json())
-          ])
-          .then(res => res.json())
-
+        loader: async ({params}) => {
+          console.log('checking param')
+          console.log(params)
+          return await fetch(
+            `http://localhost:3000/home/${params.postId}`,
+            {
+              credentials: "include",
+              headers: {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Credentials': true
+                },
+            })
+            .then(res => res.json())
         }
       },
 
