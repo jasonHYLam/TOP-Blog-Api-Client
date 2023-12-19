@@ -23,14 +23,25 @@ const router = createBrowserRouter([
         path: 'posts/:postId',
         element: <PostPage/>,
         // I may need try and catch...
-        loader: async ({params}) => {
-          return await fetch(
-            `http://localhost:3000/home/${params.postId}`,
-            {
-              credentials: "include"
-            }
-            )
-        },
+        loader: await Promise.all([
+
+          async ({params}) => {
+            return await fetch(
+              `http://localhost:3000/home/${params.postId}`,
+              {
+                credentials: "include",
+                headers: {
+                      'Content-Type': 'application/json',
+                      'Access-Control-Allow-Credentials': true
+                  },
+              }
+              )
+          },
+
+          await fetch('http://localhost:3000/home/authenticate')
+        ])
+        
+        
       },
       {
         path: 'sign-up',

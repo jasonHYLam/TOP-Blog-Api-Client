@@ -17,17 +17,18 @@ export function PostPage() {
 
     return (
         <>
-            <Post post={post}/>
+            {/* <Post post={post}/> */}
             <hr />
             <p>Comments</p>
             <textarea name="" id="" cols="30" rows="10"></textarea>
             <button>New Comment</button>
 
-            {comments.map(comment => {
+            <p>FOR NOW CHILL. NO DATA</p>
+            {/* {comments.map(comment => {
                 return (
                     <Comment key={comment._id} comment={comment}/>
                 )
-            })}
+            })} */}
 
         </>
     )

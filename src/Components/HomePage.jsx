@@ -9,6 +9,7 @@ export function HomePage() {
     fetch('http://localhost:3000/home')
     .then((res) => res.json())
     .then((data) => setPosts(data.allPosts))
+    .then()
   }, [])
 
     return (
