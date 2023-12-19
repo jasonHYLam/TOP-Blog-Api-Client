@@ -4,6 +4,8 @@ import { Post } from "./Post";
 import { Comment } from "./Comment";
 
 export function PostPage() {
+
+    const { register, formState: {errors}, handleSubmit, getValues } = useForm();
     // should i use useState and useEffect? well i certainly need to fetch the data.
     // should i use the loader function...?
 
@@ -15,23 +17,31 @@ export function PostPage() {
     console.log('tryna find loggedInUser')
     console.log(user)
 
+    // do i need action URL for Form? not sure
     return (
         <>
             {/* <Post post={post}/> */}
             <hr />
             {user ? 
             <>
-            <form action="">
-                <label htmlFor=""></label>
-            </form>
+            
+            <Form method="POST">
+                <label htmlFor="comment"></label>
+                {/* <input type="text" /> */}
+                <textarea name="" id="" cols="30" rows="10"
+                {...register('comment', {
+                    required: 'Write a comment'
+                })}
+                />
+                <button>New Comment</button>
+            </Form>
+            <p>{errors.comment?.message}</p>
             </> 
             : 
             <p>Please login to leave a comment.</p>
             }
 
             <p>Comments</p>
-            <textarea name="" id="" cols="30" rows="10"></textarea>
-            <button>New Comment</button>
 
             <p>FOR NOW CHILL. NO DATA</p>
             {/* {comments.map(comment => {
