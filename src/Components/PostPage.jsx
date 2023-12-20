@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useLoaderData, Form, useParams } from "react-router-dom"
+import { useLoaderData, Form, useParams, useNavigate } from "react-router-dom"
 import { Post } from "./Post";
 import { Comment } from "./Comment";
 
@@ -11,9 +11,12 @@ export function PostPage() {
 
     // however i do need to verify...
     const {post, comments, user} = useLoaderData();
+    console.log('checking out comments')
+    console.log(comments)
     // useParams used for getting params in React-Router
     const { postId } = useParams();
 
+    const navigate = useNavigate();
 
     // console.log('taking a look at comments')
     // console.log(comments)
@@ -28,11 +31,9 @@ export function PostPage() {
             },
             body: JSON.stringify(data),
             credentials: 'include',
-        }
-        // .then(res => res.json())
-        // console.log('done fetching')
-        )
-        
+        });
+        // navigate(`/posts/${postId}`)
+
     }
 
     // do i need action URL for Form? not sure
