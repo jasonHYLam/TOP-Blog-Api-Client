@@ -1,4 +1,6 @@
 export function Logout() {
 
-    return <></>
+    return (<>
+    <p>Prepare for logout</p>
+    </>)
 }

@@ -25,8 +25,6 @@ const router = createBrowserRouter([
         element: <PostPage/>,
 
         loader: async ({params}) => {
-          console.log('checking param')
-          console.log(params)
           return await fetch(
             `http://localhost:3000/home/${params.postId}`,
             {
@@ -53,11 +51,8 @@ const router = createBrowserRouter([
         path: 'logout',
         element: <Logout/>,
         loader: async () => {
-          console.log('should be logging out')
-          // return fetch('http://localhost:3000/logout')
-          return fetch('http://localhost:3000/logout')
-          // console.log('done logging out...')
-          // return redirect("/posts")
+          await fetch('http://localhost:3000/logout', {credentials: "include"})
+          return redirect("/posts")
         }
       }
     ],

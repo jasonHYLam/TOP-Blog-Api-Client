@@ -31,7 +31,7 @@ export function LoginPage() {
 
     const onSubmit = async (data) => {
         try {
-            console.log('good day sunshine')
+            console.log('Attempting log in')
             fetch('http://localhost:3000/login', {
                 method: 'POST',
                 headers: {

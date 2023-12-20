@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import { useLoaderData, Form } from "react-router-dom"
+import { useLoaderData, Form, useParams } from "react-router-dom"
 import { Post } from "./Post";
 import { Comment } from "./Comment";
 
@@ -11,18 +11,32 @@ export function PostPage() {
 
     // however i do need to verify...
     const {post, comments, user} = useLoaderData();
+    const { postId } = useParams();
 
-    console.log('tryna find loggedInUser')
-    console.log(user)
+
+    console.log('taking a look at comments')
+    console.log(comments)
+    // how do i get params...
+    const onSubmit = async ({params}) => {
+        console.log('taking a look at params')
+        console.log(postId)
+        fetch(`http://localhost:3000/home/${params.postId}`), {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Credentials': true
+            },
+        }
+    }
 
     // do i need action URL for Form? not sure
     return (
         <>
-            {/* <Post post={post}/> */}
+            <Post post={post}/>
             <hr />
             {user ? 
             <>
-            <Form method="POST">
+            <Form method="POST" action="POST" onSubmit={handleSubmit(onSubmit)}>
                 <label htmlFor="comment"></label>
                 {/* <input type="text" /> */}
                 <textarea name="" id="" cols="30" rows="10"
@@ -40,12 +54,12 @@ export function PostPage() {
 
             <p>Comments</p>
 
-            <p>FOR NOW CHILL. NO DATA</p>
-            {/* {comments.map(comment => {
+            {/* <p>FOR NOW CHILL. NO DATA</p> */}
+            {comments.map(comment => {
                 return (
                     <Comment key={comment._id} comment={comment}/>
                 )
-            })} */}
+            })}
 
 
         </>
