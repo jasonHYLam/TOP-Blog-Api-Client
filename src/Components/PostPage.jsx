@@ -11,22 +11,28 @@ export function PostPage() {
 
     // however i do need to verify...
     const {post, comments, user} = useLoaderData();
+    // useParams used for getting params in React-Router
     const { postId } = useParams();
 
 
-    console.log('taking a look at comments')
-    console.log(comments)
-    // how do i get params...
-    const onSubmit = async ({params}) => {
+    // console.log('taking a look at comments')
+    // console.log(comments)
+    const onSubmit = async (data) => {
         console.log('taking a look at params')
         console.log(postId)
-        fetch(`http://localhost:3000/home/${params.postId}`), {
+        await fetch(`http://localhost:3000/home/${postId}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Credentials': true
             },
+            body: JSON.stringify(data),
+            credentials: 'include',
         }
+        // .then(res => res.json())
+        // console.log('done fetching')
+        )
+        
     }
 
     // do i need action URL for Form? not sure
@@ -36,15 +42,12 @@ export function PostPage() {
             <hr />
             {user ? 
             <>
-            <Form method="POST" action="POST" onSubmit={handleSubmit(onSubmit)}>
-                <label htmlFor="comment"></label>
-                {/* <input type="text" /> */}
+            <Form method="POST" action={`/posts/${postId}`} onSubmit={handleSubmit(onSubmit)}>
+                <label htmlFor="comment">Write a comment</label>
                 <textarea name="" id="" cols="30" rows="10"
-                {...register('comment', {
-                    required: 'Write a comment'
-                })}
+                {...register('comment', {required: 'Write a comment'})}
                 />
-                <button>New Comment</button>
+                <button type="submit">New Comment</button>
             </Form>
             <p>{errors.comment?.message}</p>
             </> 
