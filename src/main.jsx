@@ -55,12 +55,10 @@ const router = createBrowserRouter([
         loader: async () => {
           console.log('should be logging out')
           // return fetch('http://localhost:3000/logout')
-          fetch('http://localhost:3000/logout')
-          return redirect("/posts")
+          return fetch('http://localhost:3000/logout')
+          // console.log('done logging out...')
+          // return redirect("/posts")
         }
-
-
-
       }
     ],
     errorElement: <ErrorPage/>
