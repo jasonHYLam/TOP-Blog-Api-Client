@@ -19,7 +19,14 @@ const AuthContext = createContext({
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <PageLayout/>,
+
+    element: 
+    
+    <AuthContext.Provider value={{loggedInUser, setLoggedInUser}}>
+
+      <PageLayout/>,
+    </AuthContext.Provider>,
+
     children: [
       {
         path: 'posts',
