@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{ createContext, useContext } from 'react'
 import ReactDOM from 'react-dom/client'
 import { HomePage } from './Components/HomePage.jsx'
 import { PageLayout } from './Components/PageLayout.jsx'
@@ -10,6 +10,8 @@ import { Logout } from './Components/Logout.jsx'
 import { SignupPage, } from './Components/SignupPage.jsx'
 // import './index.css'
 import { createBrowserRouter, RouterProvider, redirect, useNavigate } from 'react-router-dom'
+
+const AuthContext = createContext();
 
 const router = createBrowserRouter([
   {
