@@ -11,7 +11,10 @@ import { SignupPage, } from './Components/SignupPage.jsx'
 // import './index.css'
 import { createBrowserRouter, RouterProvider, redirect, useNavigate } from 'react-router-dom'
 
-const AuthContext = createContext();
+const AuthContext = createContext({
+  loggedInUser: {},
+  setLoggedInUser: () => {}
+});
 
 const router = createBrowserRouter([
   {
