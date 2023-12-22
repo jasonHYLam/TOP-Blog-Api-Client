@@ -1,4 +1,5 @@
 import React,{ createContext, useContext } from 'react'
+// import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { HomePage } from './Components/HomePage.jsx'
 import { PageLayout } from './Components/PageLayout.jsx'
@@ -10,11 +11,12 @@ import { Logout } from './Components/Logout.jsx'
 import { SignupPage, } from './Components/SignupPage.jsx'
 // import './index.css'
 import { createBrowserRouter, RouterProvider, redirect, useNavigate } from 'react-router-dom'
+import { AuthContext } from '../hooks/AuthContext.js'
 
-const AuthContext = createContext({
-  loggedInUser: {},
-  setLoggedInUser: () => {}
-});
+// const AuthContext = createContext({
+//   loggedInUser: {},
+//   setLoggedInUser: () => {}
+// });
 
 const router = createBrowserRouter([
   {
@@ -22,10 +24,12 @@ const router = createBrowserRouter([
 
     element: 
     
-    <AuthContext.Provider value={{loggedInUser, setLoggedInUser}}>
+    // <AuthContext.Provider value={{loggedInUser, setLoggedInUser}}>
+
+    //   <PageLayout/>,
+    // </AuthContext.Provider>,
 
       <PageLayout/>,
-    </AuthContext.Provider>,
 
     children: [
       {
@@ -74,6 +78,9 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    {/* <RouterProvider router={router} /> */}
+    <AuthContext.Provider value={{}}>
+      <RouterProvider router={router} />
+    </AuthContext.Provider>
   </React.StrictMode>,
 )
