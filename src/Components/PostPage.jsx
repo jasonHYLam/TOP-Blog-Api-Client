@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { useLoaderData, Form, useParams, useNavigate } from "react-router-dom"
 import { Post } from "./Post";
 import { Comment } from "./Comment";
+import parse from 'html-react-parser';
 
 export function PostPage() {
 
@@ -20,6 +21,8 @@ export function PostPage() {
 
     // console.log('taking a look at comments')
     // console.log(comments)
+    console.log('checking out post')
+    console.log(post)
     const onSubmit = async (data) => {
         console.log('taking a look at params')
         console.log(postId)
@@ -39,7 +42,17 @@ export function PostPage() {
     // do i need action URL for Form? not sure
     return (
         <>
-            <Post post={post}/>
+            {/* <Post post={post}/> */}
+            <section>
+                <h1>{post.title}</h1>
+                <p>by {post.author.username}</p>
+                <p>created on {post.date}</p>
+            </section>
+            <hr />
+            <section>
+                {parse(post.content)}
+            </section>
+
             <hr />
             {user ? 
             <>
