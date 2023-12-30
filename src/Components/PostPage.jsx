@@ -1,5 +1,4 @@
-import { useForm } from "react-hook-form";
-import { useLoaderData, Form, useParams, useNavigate } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import { Post } from "./Post";
 import { Comment } from "./Comment";
 import parse from 'html-react-parser';
@@ -8,11 +7,13 @@ import { CommentForm } from "./CommentForm";
 
 export function PostPage() {
     
-    // useParams used for getting params in React-Router
+    // useParams used for getting params in React-Router.
     const { postid } = useParams();
-    const navigate = useNavigate();
+    // isChangeSubmitted used to trigger useEffect callback and rerender PostPage component.
     const [ isChangeSubmitted, setIsChangeSubmitted ] = useState();
+    // isLoaded used to prevent rendering error when first rendering the component.
     const [ isLoaded, setIsLoaded ] = useState(false)
+
     const [ post, setPost ] = useState();
     const [ comments, setComments ] = useState();
     const [ user, setUser ] = useState();
@@ -46,15 +47,7 @@ export function PostPage() {
     return (
         !isLoaded ? <p>Loading</p> : 
         <>
-            <section>
-                <h1>{post.title}</h1>
-                <p>by {post.author.username}</p>
-                <p>created on {post.date}</p>
-            </section>
-            <hr />
-            <section>
-                {parse(post.content)}
-            </section>
+            <Post post={post}/>
 
             <hr />
             {!user ? <p>Please login to leave a comment.</p> :
@@ -70,8 +63,6 @@ export function PostPage() {
                     <Comment key={comment._id} comment={comment}/>
                 )
             })}
-
-
         </>
     )
 }
