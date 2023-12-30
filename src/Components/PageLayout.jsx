@@ -4,11 +4,11 @@ import { useState, useEffect } from "react"
 export function PageLayout() {
 
     const [ isUserLoggedIn, setIsUserLoggedIn ] = useState(false)
+    const [user, setUser] = useState()
     // need to pass isUserLoggedIn to pageHeader
     // need to pass setIsUserLoggedIn to outlet as context i think
 
     useEffect(() => {
-        console.log('checking if pagelayout userEffect is called')
 
         async function getUser() {
         // try to obtain user from response object
@@ -22,13 +22,17 @@ export function PageLayout() {
 
         // if they exist, setIsUserLoggedIn to true.
         // If undefined, user is an empty object
-        if (user) setIsUserLoggedIn(true)
+        if (user) {
+            setIsUserLoggedIn(true)
+            setUser(user)
+        }
+
         }
         getUser()
     }, [isUserLoggedIn])
     return (
         <>
-            <PageHeader isUserLoggedIn={isUserLoggedIn}/>
+            <PageHeader isUserLoggedIn={isUserLoggedIn} user={user}/>
             <Outlet context={[setIsUserLoggedIn]}/>
         
         </>

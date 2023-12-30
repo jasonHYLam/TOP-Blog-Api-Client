@@ -10,14 +10,17 @@ export function Logout() {
 
         async function logout() {
             fetch('http://localhost:3000/logout', {credentials: "include"})
-            // return redirect("/posts")
             setIsUserLoggedIn(false)
         }
         logout()
         navigate('/posts')
     },
-    [navigate])
-    return (<>
-    <p>Prepare for logout</p>
-    </>)
+    [navigate, setIsUserLoggedIn]
+    )
+
+    return (
+        <>
+        <p>Prepare for logout</p>
+        </>
+    )
 }
