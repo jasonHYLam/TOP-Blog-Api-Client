@@ -5,28 +5,18 @@ import { Comment } from "./Comment";
 import parse from 'html-react-parser';
 import { useEffect, useState } from "react";
 
-// i may have to refactor such that state is used rather than route loader. to update page after leaving a comment.
 export function PostPage() {
     
     // useParams used for getting params in React-Router
-    const { postId } = useParams();
-    console.log('checking out postid')
-    console.log(postid)
-
+    const { postid } = useParams();
+    const navigate = useNavigate();
     const [ isChangeSubmitted, setIsChangeSubmitted ] = useState();
+    const [ isLoaded, setIsLoaded ] = useState(false)
     const [ post, setPost ] = useState();
     const [ comments, setComments ] = useState();
-
     const [ user, setUser ] = useState();
 
-
-
     const { register, formState: {errors}, handleSubmit, getValues } = useForm();
-    // should i use useState and useEffect? well i certainly need to fetch the data.
-    // should i use the loader function...?
-
-    // however i do need to verify...
-    // const {post, comments, user} = useLoaderData();
 
     useEffect(() => {
         async function fetchData() {
@@ -40,27 +30,17 @@ export function PostPage() {
                     'Access-Control-Allow-Credentials': true
                 },
             })
-            // .then(res => res.json())
-            const data = response.json();
-            console.log('checking out data')
-            console.log(data)
+            const {post, comments, user} = await response.json();
+
+            setPost(post);
+            setComments(comments);
+            setUser(user);
+            setIsLoaded(true);
         }
         fetchData()
     },
-    []
+    [isLoaded, postid]
     )
-
-
-
-    console.log('checking out comments')
-    console.log(comments)
-
-    const navigate = useNavigate();
-
-    // console.log('taking a look at comments')
-    // console.log(comments)
-    console.log('checking out post')
-    console.log(post)
 
     const onSubmit = async (data) => {
         console.log('taking a look at params')
@@ -78,10 +58,10 @@ export function PostPage() {
 
     }
 
-    // do i need action URL for Form? not sure
     return (
+        !isLoaded ? <p>Loading</p> : 
         <>
-            {/* <section>
+            <section>
                 <h1>{post.title}</h1>
                 <p>by {post.author.username}</p>
                 <p>created on {post.date}</p>
@@ -94,7 +74,7 @@ export function PostPage() {
             <hr />
             {user ? 
             <>
-            <Form method="POST" action={`/posts/${postId}`} onSubmit={handleSubmit(onSubmit)}>
+            <Form method="POST" action={`/posts/${postid}`} onSubmit={handleSubmit(onSubmit)}>
                 <label htmlFor="comment">Write a comment</label>
                 <textarea name="" id="" cols="30" rows="10"
                 {...register('comment', {required: 'Write a comment'})}
@@ -114,7 +94,7 @@ export function PostPage() {
                     <Comment key={comment._id} comment={comment}/>
                 )
             })}
- */}
+
 
         </>
     )
