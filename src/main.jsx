@@ -1,5 +1,4 @@
 import React,{ createContext, useContext } from 'react'
-// import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { HomePage } from './Components/HomePage.jsx'
 import { PageLayout } from './Components/PageLayout.jsx'
@@ -7,30 +6,14 @@ import { PostPage } from './Components/PostPage.jsx'
 import { ErrorPage } from './Components/ErrorPage.jsx'
 import { LoginPage } from './Components/LoginPage.jsx'
 import { Logout } from './Components/Logout.jsx'
-// import { SignupPage, action as signupAction } from './Components/SignupPage.jsx'
 import { SignupPage, } from './Components/SignupPage.jsx'
 // import './index.css'
 import { createBrowserRouter, RouterProvider, redirect, useNavigate } from 'react-router-dom'
-import { AuthContext } from '../hooks/AuthContext.js'
-
-// const AuthContext = createContext({
-//   loggedInUser: {},
-//   setLoggedInUser: () => {}
-// });
 
 const router = createBrowserRouter([
   {
     path: '/',
-
-    element: 
-    
-    // <AuthContext.Provider value={{loggedInUser, setLoggedInUser}}>
-
-    //   <PageLayout/>,
-    // </AuthContext.Provider>,
-
-      <PageLayout/>,
-
+    element: <PageLayout/>,
     children: [
       {
         path: 'posts',
@@ -39,25 +22,11 @@ const router = createBrowserRouter([
       {
         path: 'posts/:postid',
         element: <PostPage/>,
-
-        // loader: async ({params}) => {
-        //   return await fetch(
-        //     `http://localhost:3000/home/${params.postId}`,
-        //     {
-        //       credentials: "include",
-        //       headers: {
-        //             'Content-Type': 'application/json',
-        //             'Access-Control-Allow-Credentials': true
-        //         },
-        //     })
-        //     .then(res => res.json())
-        // }
       },
 
       {
         path: 'sign-up',
         element: <SignupPage/>,
-        // action: signupAction,
       },
       {
         path: 'login',
@@ -66,10 +35,6 @@ const router = createBrowserRouter([
       {
         path: 'logout',
         element: <Logout/>,
-        // loader: async () => {
-        //   await fetch('http://localhost:3000/logout', {credentials: "include"})
-        //   return redirect("/posts")
-        // }
       }
     ],
     errorElement: <ErrorPage/>
@@ -78,9 +43,6 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    {/* <RouterProvider router={router} /> */}
-    <AuthContext.Provider value={{}}>
       <RouterProvider router={router} />
-    </AuthContext.Provider>
   </React.StrictMode>,
 )

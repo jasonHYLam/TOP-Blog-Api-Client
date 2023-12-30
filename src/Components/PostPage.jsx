@@ -72,7 +72,7 @@ export function PostPage() {
             </section>
 
             <hr />
-            {user ? 
+            {!user ? <p>Please login to leave a comment.</p> :
             <>
             <Form method="POST" action={`/posts/${postid}`} onSubmit={handleSubmit(onSubmit)}>
                 <label htmlFor="comment">Write a comment</label>
@@ -83,8 +83,6 @@ export function PostPage() {
             </Form>
             <p>{errors.comment?.message}</p>
             </> 
-            : 
-            <p>Please login to leave a comment.</p>
             }
 
             <p>Comments</p>
