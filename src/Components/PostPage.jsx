@@ -4,6 +4,7 @@ import { Post } from "./Post";
 import { Comment } from "./Comment";
 import parse from 'html-react-parser';
 import { useEffect, useState } from "react";
+import { CommentForm } from "./CommentForm";
 
 export function PostPage() {
     
@@ -15,8 +16,6 @@ export function PostPage() {
     const [ post, setPost ] = useState();
     const [ comments, setComments ] = useState();
     const [ user, setUser ] = useState();
-
-    const { register, formState: {errors}, handleSubmit, getValues } = useForm();
 
     useEffect(() => {
         async function fetchData() {
@@ -36,27 +35,13 @@ export function PostPage() {
             setComments(comments);
             setUser(user);
             setIsLoaded(true);
+            setIsChangeSubmitted(false)
         }
         fetchData()
     },
-    [isLoaded, postid]
+    [isLoaded, postid, isChangeSubmitted]
     )
 
-    const onSubmit = async (data) => {
-        console.log('taking a look at params')
-        console.log(postId)
-        await fetch(`http://localhost:3000/home/${postId}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Credentials': true
-            },
-            body: JSON.stringify(data),
-            credentials: 'include',
-        });
-        // navigate(`/posts/${postId}`)
-
-    }
 
     return (
         !isLoaded ? <p>Loading</p> : 
@@ -74,14 +59,7 @@ export function PostPage() {
             <hr />
             {!user ? <p>Please login to leave a comment.</p> :
             <>
-            <Form method="POST" action={`/posts/${postid}`} onSubmit={handleSubmit(onSubmit)}>
-                <label htmlFor="comment">Write a comment</label>
-                <textarea name="" id="" cols="30" rows="10"
-                {...register('comment', {required: 'Write a comment'})}
-                />
-                <button type="submit">New Comment</button>
-            </Form>
-            <p>{errors.comment?.message}</p>
+            <CommentForm setIsChangedSubmitted={setIsChangeSubmitted} />
             </> 
             }
 

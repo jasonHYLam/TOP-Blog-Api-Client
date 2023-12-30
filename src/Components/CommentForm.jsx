@@ -9,7 +9,7 @@ export function CommentForm({ setIsChangedSubmitted }) {
     const onSubmit = async (data) => {
         console.log('taking a look at params')
         console.log(postid)
-        await fetch(`http://localhost:3000/home/${postId}`, {
+        await fetch(`http://localhost:3000/home/${postid}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
