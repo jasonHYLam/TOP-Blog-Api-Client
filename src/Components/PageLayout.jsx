@@ -15,20 +15,21 @@ export function PageLayout() {
         const response = await fetch('http://localhost:3000/get_user', {
             credentials: 'include',
         })
-        const user = await response.json()
+        const { user } = await response.json()
 
         console.log('checking out user')
         console.log(user)
 
         // if they exist, setIsUserLoggedIn to true.
+        // If undefined, user is an empty object
         if (user) setIsUserLoggedIn(true)
         }
         getUser()
-    }, [])
+    }, [isUserLoggedIn])
     return (
         <>
             <PageHeader isUserLoggedIn={isUserLoggedIn}/>
-            <Outlet context={[isUserLoggedIn, setIsUserLoggedIn]}/>
+            <Outlet context={[setIsUserLoggedIn]}/>
         
         </>
     )

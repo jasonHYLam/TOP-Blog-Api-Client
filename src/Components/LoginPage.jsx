@@ -7,9 +7,7 @@ import { useState } from "react";
 // cus that's a backend operation
 export function LoginPage() {
 
-    const [isUserLoggedIn, setIsUserLoggedIn] = useOutletContext();
-    console.log('checking out isUserLoggedIn')
-    console.log(isUserLoggedIn)
+    const [setIsUserLoggedIn] = useOutletContext();
 
     const { register, formState: {errors}, handleSubmit, getValues } = useForm();
     const [backendErrors, setBackendErrors] = useState('');

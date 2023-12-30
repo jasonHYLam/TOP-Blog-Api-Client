@@ -66,10 +66,10 @@ const router = createBrowserRouter([
       {
         path: 'logout',
         element: <Logout/>,
-        loader: async () => {
-          await fetch('http://localhost:3000/logout', {credentials: "include"})
-          return redirect("/posts")
-        }
+        // loader: async () => {
+        //   await fetch('http://localhost:3000/logout', {credentials: "include"})
+        //   return redirect("/posts")
+        // }
       }
     ],
     errorElement: <ErrorPage/>
