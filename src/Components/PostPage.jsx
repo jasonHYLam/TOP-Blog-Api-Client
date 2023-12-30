@@ -4,6 +4,7 @@ import { Post } from "./Post";
 import { Comment } from "./Comment";
 import parse from 'html-react-parser';
 
+// i may have to refactor such that state is used rather than route loader. to update page after leaving a comment.
 export function PostPage() {
 
     const { register, formState: {errors}, handleSubmit, getValues } = useForm();

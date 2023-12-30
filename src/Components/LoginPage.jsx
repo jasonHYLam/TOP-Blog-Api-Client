@@ -1,28 +1,15 @@
-import { Form, useNavigate } from "react-router-dom"
+import { Form, useNavigate, useOutletContext } from "react-router-dom"
 import { useForm } from "react-hook-form";
 import { useState } from "react";
-
-export async function action({params, request}) {
-    let formData = await request.formData();
-    formData = Object.fromEntries(formData)
-    console.log(JSON.stringify(formData))
-
-    // fetch for non react-hook-form set up
-
-    // fetch(`http://localhost:3000/signup`, {
-    // method: "POST",
-    // headers: {"Content-Type": "application/json"},
-    // body: JSON.stringify(formData)
-    // })
-    // .catch(err => console.err(err))
-
-    // return redirect('/posts')
-}
 
 // using react-hook-form for FE form validation?
 // how would i do the validation and handle incorrect user credentials, and show them?
 // cus that's a backend operation
 export function LoginPage() {
+
+    const [isUserLoggedIn, setIsUserLoggedIn] = useOutletContext();
+    console.log('checking out isUserLoggedIn')
+    console.log(isUserLoggedIn)
 
     const { register, formState: {errors}, handleSubmit, getValues } = useForm();
     const [backendErrors, setBackendErrors] = useState('');
@@ -48,6 +35,8 @@ export function LoginPage() {
                 else {
                     console.log('fetched as per your bidding, now redirecting...')
                     console.log(res)
+                    // set state such that the header knows that the user has logged in.
+                    setIsUserLoggedIn(true)
                     navigate('/posts');
                 }
             })
