@@ -37,21 +37,21 @@ const router = createBrowserRouter([
         element: <HomePage/>,
       },
       {
-        path: 'posts/:postId',
+        path: 'posts/:postid',
         element: <PostPage/>,
 
-        loader: async ({params}) => {
-          return await fetch(
-            `http://localhost:3000/home/${params.postId}`,
-            {
-              credentials: "include",
-              headers: {
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Credentials': true
-                },
-            })
-            .then(res => res.json())
-        }
+        // loader: async ({params}) => {
+        //   return await fetch(
+        //     `http://localhost:3000/home/${params.postId}`,
+        //     {
+        //       credentials: "include",
+        //       headers: {
+        //             'Content-Type': 'application/json',
+        //             'Access-Control-Allow-Credentials': true
+        //         },
+        //     })
+        //     .then(res => res.json())
+        // }
       },
 
       {
