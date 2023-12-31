@@ -2,8 +2,17 @@
 .form {
     display: flex;
     flex-direction: column;
+    margin-bottom: 70px;
 }
 
 .button {
     width: 100px;
+    border-radius: 10px;
+}
+
+.input {
+    background-color: aliceblue;
+    border: none;
+    box-shadow: inset 0 0 10px grey;
+    margin-bottom: 20px;
 }

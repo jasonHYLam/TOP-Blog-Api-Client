@@ -28,7 +28,7 @@ export function CommentForm({ setIsChangedSubmitted }) {
         <Form className={styles.form} method="POST" onSubmit={handleSubmit(onSubmit)}>
 
             <p htmlFor="comment">Write a comment</p>
-            <textarea name="" id="" cols="30" rows="10"
+            <textarea className={styles.input} name="" id="" cols="30" rows="10"
             {...register('comment', {required: 'Write a comment'})}
             />
             <button className={styles.button} type="submit">New Comment</button>

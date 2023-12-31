@@ -17,6 +17,9 @@ export function PostPage() {
     const [ comments, setComments ] = useState();
     const [ user, setUser ] = useState();
 
+    console.log('checking out comments')
+    console.log(comments)
+
     useEffect(() => {
         async function fetchData() {
 
@@ -58,11 +61,20 @@ export function PostPage() {
 
             <p>Comments</p>
 
-            {comments.map(comment => {
-                return (
-                    <Comment key={comment._id} comment={comment}/>
-                )
-            })}
+            {
+                comments.length === 0 ? <p> No comments -__- </p> :
+
+                <>
+
+                {comments.map(comment => {
+                    return (
+                        <Comment key={comment._id} comment={comment}/>
+                    )
+                })}
+                </>
+
+            }
+
         </>
     )
 }
