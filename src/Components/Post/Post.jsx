@@ -1,4 +1,5 @@
 import parse from 'html-react-parser';
+import styles from './Post.module.css';
 
 export function Post({ post }) {
     return <>
@@ -9,7 +10,7 @@ export function Post({ post }) {
                     <p>created on {post.date}</p>
                 </section>
                 <hr />
-                <section>
+                <section className={styles.blogPostContent}>
                     {parse(post.content)}
                 </section>
             </article>
