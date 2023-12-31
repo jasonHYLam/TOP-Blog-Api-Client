@@ -10,5 +10,9 @@
     flex-direction: row;
     gap: 20px;
     align-items: center;
+}
 
+.headerText {
+    color: white;
+    text-shadow: 0 3px 0 black;
 }

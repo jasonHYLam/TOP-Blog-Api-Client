@@ -10,15 +10,15 @@ export function PageHeader({isUserLoggedIn, user}) {
                 <div className={styles.linksGroup}>
                     {isUserLoggedIn ? 
                     <>
-                        {user.username ?  <p>Welcome, {user.username}</p> : null}
-                        <Link to={"posts"}>Home</Link>
-                        <Link to={"/logout"}>Log out</Link>
+                        {user.username ?  <p className={styles.headerText}>Welcome, {user.username}</p> : null}
+                        <Link className={styles.headerText} to={"posts"}>Home</Link>
+                        <Link className={styles.headerText} to={"/logout"}>Log out</Link>
                     </>
                     : 
                     <>
-                        <Link to={"posts"}>Home</Link>
-                        <Link to={"/sign-up"}>Sign up</Link>
-                        <Link to={"/login"}>Login</Link>
+                        <Link className={styles.headerText} to={"posts"}>Home</Link>
+                        <Link className={styles.headerText} to={"/sign-up"}>Sign up</Link>
+                        <Link className={styles.headerText} to={"/login"}>Login</Link>
                     </>
                     }
 
