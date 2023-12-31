@@ -1,6 +1,8 @@
 .header {
     background-color: blue;
     justify-content: end;
+    height: 70px;
+    justify-content: center;
 }
 
 .linksGroup {

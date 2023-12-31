@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom';
 import { PostPreview } from '../PostPreview/PostPreview';
 import styles from './HomePage.module.css'
 

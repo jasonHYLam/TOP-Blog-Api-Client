@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom"
 import { PageHeader } from "../PageHeader/PageHeader";
 import { useState, useEffect } from "react"
+import styles from './PageLayout.module.css';
 
 export function PageLayout() {
 
@@ -36,7 +37,10 @@ export function PageLayout() {
             { !isContentLoaded ? <p>Loading</p> : 
             <>
                 <PageHeader isUserLoggedIn={isUserLoggedIn} user={user}/>
-                <Outlet context={[setIsUserLoggedIn]}/>
+
+                <main className={styles.outletWrapper} >
+                    <Outlet context={[setIsUserLoggedIn]}/>
+                </main>
             </>
             }
         </>

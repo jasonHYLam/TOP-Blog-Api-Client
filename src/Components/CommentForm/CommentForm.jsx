@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form"
 import { useParams, Form } from "react-router-dom";
+import styles from './CommentForm.module.css';
 
 export function CommentForm({ setIsChangedSubmitted }) {
 
@@ -24,13 +25,13 @@ export function CommentForm({ setIsChangedSubmitted }) {
 
     return (
         <>
-        <Form method="POST" onSubmit={handleSubmit(onSubmit)}>
+        <Form className={styles.form} method="POST" onSubmit={handleSubmit(onSubmit)}>
 
-            <label htmlFor="comment">Write a comment</label>
+            <p htmlFor="comment">Write a comment</p>
             <textarea name="" id="" cols="30" rows="10"
             {...register('comment', {required: 'Write a comment'})}
             />
-            <button type="submit">New Comment</button>
+            <button className={styles.button} type="submit">New Comment</button>
         </Form>
         <p>{errors.comment?.message}</p>
         
