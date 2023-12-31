@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
-import { Post } from './Post';
 import { Link } from 'react-router-dom';
+import { PostPreview } from '../PostPreview/PostPreview';
+
+// could include number of comments and likes.
 
 export function HomePage() {
   const [posts, setPosts] = useState([]);
@@ -15,13 +17,13 @@ export function HomePage() {
     return (
         <>
             <p>Yo ho, land spotted.</p>
+            {/* show only the published blogPosts */}
             {posts.map((post) => {
-            // console.log(post)
-            return (
-              <Link key={post._id} to={`/posts/${post._id}`}>
-                <Post  post={post} />
-              </Link>
-            )  
+              return (
+                <Link key={post._id} to={`/posts/${post._id}`}>
+                  <PostPreview post={post}/>
+                </Link>
+              )  
           })}
             
         </>

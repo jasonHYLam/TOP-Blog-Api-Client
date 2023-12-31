@@ -1,9 +1,8 @@
 import { useParams } from "react-router-dom"
-import { Post } from "./Post";
-import { Comment } from "./Comment";
-import parse from 'html-react-parser';
+import { Post } from "../Post/Post";
+import { Comment } from "../Comment/Comment";
 import { useEffect, useState } from "react";
-import { CommentForm } from "./CommentForm";
+import { CommentForm } from "../CommentForm/CommentForm";
 
 export function PostPage() {
     
@@ -50,6 +49,7 @@ export function PostPage() {
             <Post post={post}/>
 
             <hr />
+
             {!user ? <p>Please login to leave a comment.</p> :
             <>
             <CommentForm setIsChangedSubmitted={setIsChangeSubmitted} />

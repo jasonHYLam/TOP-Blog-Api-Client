@@ -9,13 +9,11 @@ export function PageHeader({isUserLoggedIn, user}) {
                 <Link to={"posts"}>Home</Link>
                 {isUserLoggedIn ? 
                 <>
-                    <p>yes logged in</p> 
                     {user.username ?  <p>Welcome, {user.username}</p> : null}
                     <Link to={"/logout"}>Log out</Link>
                 </>
                 : 
                 <>
-                    <p>no not logged in</p>
                     <Link to={"/sign-up"}>Sign up</Link>
                     <Link to={"/login"}>Login</Link>
                 </>
