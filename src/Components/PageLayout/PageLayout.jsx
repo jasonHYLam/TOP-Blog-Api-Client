@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom"
-import { PageHeader } from "./PageHeader"
+import { PageHeader } from "../PageHeader/PageHeader";
 import { useState, useEffect } from "react"
 
 export function PageLayout() {

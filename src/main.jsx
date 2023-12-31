@@ -1,14 +1,14 @@
-import React,{ createContext, useContext } from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { HomePage } from './Components/HomePage.jsx'
-import { PageLayout } from './Components/PageLayout.jsx'
-import { PostPage } from './Components/PostPage.jsx'
-import { ErrorPage } from './Components/ErrorPage.jsx'
-import { LoginPage } from './Components/LoginPage.jsx'
-import { Logout } from './Components/Logout.jsx'
-import { SignupPage, } from './Components/SignupPage.jsx'
+import { HomePage } from './Components/HomePage/HomePage.jsx'
+import { PageLayout } from './Components/PageLayout/PageLayout.jsx'
+import { PostPage } from './Components/PostPage/PostPage.jsx'
+import { ErrorPage } from './Components/ErrorPage/ErrorPage.jsx'
+import { LoginPage } from './Components/LoginPage/LoginPage.jsx'
+import { Logout } from './Components/Logout/Logout.jsx'
+import { SignupPage, } from './Components/SignupPage/SignupPage.jsx'
 // import './index.css'
-import { createBrowserRouter, RouterProvider, redirect, useNavigate } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 const router = createBrowserRouter([
   {
