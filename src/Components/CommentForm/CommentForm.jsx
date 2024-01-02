@@ -5,6 +5,7 @@ import styles from './CommentForm.module.css';
 export function CommentForm({ setIsChangedSubmitted }) {
 
     const { postid } = useParams();
+    // reset is used to reset input on submit.
     const {register, formState: {errors}, handleSubmit, reset } = useForm();
 
     const onSubmit = async (data) => {
@@ -20,7 +21,6 @@ export function CommentForm({ setIsChangedSubmitted }) {
 
         reset();
         setIsChangedSubmitted(true);
-        // navigate(`/posts/${postId}`)
     }
 
     return (

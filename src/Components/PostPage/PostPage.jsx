@@ -3,6 +3,7 @@ import { Post } from "../Post/Post";
 import { Comment } from "../Comment/Comment";
 import { useEffect, useState } from "react";
 import { CommentForm } from "../CommentForm/CommentForm";
+import styles from './PostPage.module.css';
 
 export function PostPage() {
     
@@ -16,9 +17,6 @@ export function PostPage() {
     const [ post, setPost ] = useState();
     const [ comments, setComments ] = useState();
     const [ user, setUser ] = useState();
-
-    console.log('checking out comments')
-    console.log(comments)
 
     useEffect(() => {
         async function fetchData() {
@@ -49,31 +47,36 @@ export function PostPage() {
     return (
         !isLoaded ? <p>Loading</p> : 
         <>
-            <Post post={post}/>
+            <div className={styles.postPageWrapper}>
 
-            <hr />
+                <Post post={post}/>
 
-            {!user ? <p>Please login to leave a comment.</p> :
-            <>
-            <CommentForm setIsChangedSubmitted={setIsChangeSubmitted} />
-            </> 
-            }
+                <hr />
 
-            <p>Comments</p>
-
-            {
-                comments.length === 0 ? <p> No comments -__- </p> :
-
+                {!user ? <p>Please login to leave a comment.</p> :
                 <>
+                <CommentForm setIsChangedSubmitted={setIsChangeSubmitted} />
+                </> 
+                }
 
-                {comments.map(comment => {
-                    return (
-                        <Comment key={comment._id} comment={comment}/>
-                    )
-                })}
-                </>
+                <p>Comments</p>
 
-            }
+                {
+                    comments.length === 0 ? <p> No comments -__- </p> :
+
+                    <>
+
+                    {comments.map(comment => {
+                        return (
+                            <Comment key={comment._id} comment={comment}/>
+                        )
+                    })}
+                    </>
+
+                }
+
+
+            </div>
 
         </>
     )

@@ -12,9 +12,12 @@ export function PostPreview({post}) {
         <>
 
             <Link className={styles.postContainer} to={`/posts/${post._id}`}>
-                <h2>{post.title}</h2>
-                <p>by {post.author.username}</p>
-                <p>{post.dateFormatted}</p>
+                <div className={styles.postPreviewHeader}></div>
+                <div>
+                    <h2>{post.title}</h2>
+                    <p>by {post.author.username}</p>
+                    <p>{post.dateFormatted}</p>
+                </div>
             </Link>
         </>
     )

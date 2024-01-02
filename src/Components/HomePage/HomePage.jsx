@@ -21,9 +21,13 @@ export function HomePage() {
             <section className={styles.postsGroup}>
 
               {posts.map((post) => {
-                return (
-                  <PostPreview key={post._id} post={post}/>
-                )  
+                if (post.published_status) {
+
+                  return (
+                    <PostPreview key={post._id} post={post}/>
+                  )  
+
+                }
             })}
 
             </section>

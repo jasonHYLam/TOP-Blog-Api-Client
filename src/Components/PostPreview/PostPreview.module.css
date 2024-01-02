@@ -1,4 +1,18 @@
 .postContainer {
-    border: 1px solid black;
+    /* border: 1px solid black; */
     height: 300px;
+    display: flex;
+    flex-direction: column;
+    background-image: url('../../assets/postPreview.png');
+    background-size: contain;
+    background-position: right bottom;
+    background-repeat: no-repeat;
 }
+
+.postPreviewHeader {
+    height: 80px;
+    background-image: url('../../assets/shoe.png');
+    /* background-size: contain; */
+    background-size: 100px 100px;
+}
+
