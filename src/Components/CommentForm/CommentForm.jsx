@@ -9,7 +9,7 @@ export function CommentForm({ setIsChangedSubmitted }) {
     const {register, formState: {errors}, handleSubmit, reset } = useForm();
 
     const onSubmit = async (data) => {
-        await fetch(`http://localhost:3000/home/${postid}`, {
+        await fetch(`${import.meta.env.VITE_BACKEND_URL}/home/${postid}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

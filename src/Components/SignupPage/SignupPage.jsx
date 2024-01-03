@@ -10,7 +10,7 @@ export function SignupPage() {
     // fetch POST request made to backend to post user data, and then redirect to homepage via navigate()
     const onSubmit = async (data) => {
         try {
-            fetch(`http://localhost:3000/signup`, {
+            fetch(`${import.meta.env.VITE_BACKEND_URL}/signup`, {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify(data)

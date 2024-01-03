@@ -22,7 +22,7 @@ export function PostPage() {
         async function fetchData() {
 
           const response = await fetch(
-            `http://localhost:3000/home/${postid}`,
+            `${import.meta.env.VITE_BACKEND_URL}/home/${postid}`,
             {
               credentials: "include",
               headers: {

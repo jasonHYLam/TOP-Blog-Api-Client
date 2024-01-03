@@ -9,7 +9,7 @@ export function Logout() {
     useEffect(() => {
 
         async function logout() {
-            fetch('http://localhost:3000/logout', {credentials: "include"})
+            fetch(`${import.meta.env.VITE_BACKEND_URL}/logout`, {credentials: "include"})
             setIsUserLoggedIn(false)
         }
         logout()

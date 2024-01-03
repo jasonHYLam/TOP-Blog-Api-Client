@@ -8,7 +8,7 @@ export function HomePage() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/home')
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/home`)
     .then((res) => res.json())
     .then((data) => setPosts(data.allPosts))
     .then()

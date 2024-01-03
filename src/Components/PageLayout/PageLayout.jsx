@@ -15,7 +15,7 @@ export function PageLayout() {
 
         async function getUser() {
         // try to obtain user from response object
-        const response = await fetch('http://localhost:3000/get_user', {
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/get_user`, {
             credentials: 'include',
         })
         const { user } = await response.json()
