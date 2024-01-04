@@ -24,7 +24,14 @@ export function LoginPage() {
                 body: JSON.stringify(data),
                 credentials: 'include',
             })
-            .then(res => res.json())
+            .then(res => {
+
+                console.log('checking out res...')
+                console.log(res)
+                res.json()
+
+            }
+                )
             .then(res => {
                 console.log('checking fruits of login operation')
                 console.log(res)
