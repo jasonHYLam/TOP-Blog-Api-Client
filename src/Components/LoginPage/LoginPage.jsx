@@ -26,6 +26,8 @@ export function LoginPage() {
             })
             .then(res => res.json())
             .then(res => {
+                console.log('checking fruits of login operation')
+                console.log(res)
                 if (res.success === false ) setBackendErrors(res.message)
 
                 else {
