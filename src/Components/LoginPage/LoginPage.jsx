@@ -15,7 +15,36 @@ export function LoginPage() {
 
     const onSubmit = async (data) => {
         try {
-            fetch(`${import.meta.env.VITE_BACKEND_URL}/login`, {
+            // fetch(`${import.meta.env.VITE_BACKEND_URL}/login`, {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //         'Access-Control-Allow-Credentials': true
+            //     },
+            //     body: JSON.stringify(data),
+            //     credentials: 'include',
+            // })
+            // .then(res => {
+
+            //     console.log('checking out res...')
+            //     console.log(res)
+            //     res.json()
+
+            // }
+            //     )
+            // .then(res => {
+            //     console.log('checking fruits of login operation')
+            //     console.log(res)
+            //     if (res.success === false ) setBackendErrors(res.message)
+
+            //     else {
+            //         // set state such that the header knows that the user has logged in.
+            //         setIsUserLoggedIn(true)
+            //         navigate('/posts');
+            //     }
+            // })
+
+            const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -24,26 +53,38 @@ export function LoginPage() {
                 body: JSON.stringify(data),
                 credentials: 'include',
             })
-            .then(res => {
 
-                console.log('checking out res...')
-                console.log(res)
-                res.json()
+            console.log('checking out res object')
+            console.log(res)
+            console.log(res.success)
 
-            }
-                )
-            .then(res => {
-                console.log('checking fruits of login operation')
-                console.log(res)
-                if (res.success === false ) setBackendErrors(res.message)
+            const data = response.json();
+            // .then(res => {
 
-                else {
-                    // set state such that the header knows that the user has logged in.
-                    setIsUserLoggedIn(true)
-                    navigate('/posts');
-                }
-            })
+            //     console.log('checking out res...')
+            //     console.log(res)
+            //     res.json()
 
+            // }
+            //     )
+
+            console.log('checking out data')
+
+            console.log(data)
+            // maybe the success property is on data
+            // need to confirm that token is created and assigned...
+
+            // .then(res => {
+            //     console.log('checking fruits of login operation')
+            //     console.log(res)
+            //     if (res.success === false ) setBackendErrors(res.message)
+
+            //     else {
+            //         // set state such that the header knows that the user has logged in.
+            //         setIsUserLoggedIn(true)
+            //         navigate('/posts');
+            //     }
+            // })
             
         }
         catch(err) {
