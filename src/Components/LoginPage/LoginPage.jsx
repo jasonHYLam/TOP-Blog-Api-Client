@@ -30,35 +30,15 @@ export function LoginPage() {
 
             console.log('checking out res object')
             console.log(response)
-            // console.log(res.success)
 
             const data = await response.json();
-            // .then(res => {
-
-            //     console.log('checking out res...')
-            //     console.log(res)
-            //     res.json()
-
-            // }
-            //     )
-
             console.log('checking out data')
-
             console.log(data)
-            // maybe the success property is on data
-            // need to confirm that token is created and assigned...
-
-            // .then(res => {
-            //     console.log('checking fruits of login operation')
-            //     console.log(res)
-            //     if (res.success === false ) setBackendErrors(res.message)
-
-            //     else {
-            //         // set state such that the header knows that the user has logged in.
-            //         setIsUserLoggedIn(true)
-            //         navigate('/posts');
-            //     }
-            // })
+            if ( data.success === false ) setBackendErrors(data.message)
+            else {
+                setIsUserLoggedIn(true)
+                navigate('/posts');
+            }
             
         }
 
