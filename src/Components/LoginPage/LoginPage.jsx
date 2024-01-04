@@ -86,7 +86,7 @@ export function LoginPage() {
 
                     <label htmlFor="password">Password</label>
                     <input 
-                        type="text" 
+                        type="password" 
                         {...register('password', {
                             required: 'Password is required',
                         })
