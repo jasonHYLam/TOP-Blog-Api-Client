@@ -13,50 +13,24 @@ export function LoginPage() {
 
     const navigate = useNavigate();
 
-    const onSubmit = async (data) => {
+    const onSubmit = async (loginInput) => {
+        console.log('checking out loginInput')
+        console.log(loginInput)
+
         try {
-            // fetch(`${import.meta.env.VITE_BACKEND_URL}/login`, {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //         'Access-Control-Allow-Credentials': true
-            //     },
-            //     body: JSON.stringify(data),
-            //     credentials: 'include',
-            // })
-            // .then(res => {
-
-            //     console.log('checking out res...')
-            //     console.log(res)
-            //     res.json()
-
-            // }
-            //     )
-            // .then(res => {
-            //     console.log('checking fruits of login operation')
-            //     console.log(res)
-            //     if (res.success === false ) setBackendErrors(res.message)
-
-            //     else {
-            //         // set state such that the header knows that the user has logged in.
-            //         setIsUserLoggedIn(true)
-            //         navigate('/posts');
-            //     }
-            // })
-
             const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'Access-Control-Allow-Credentials': true
                 },
-                body: JSON.stringify(data),
+                body: JSON.stringify(loginInput),
                 credentials: 'include',
             })
 
             console.log('checking out res object')
-            console.log(res)
-            console.log(res.success)
+            console.log(response)
+            // console.log(res.success)
 
             const data = response.json();
             // .then(res => {
@@ -87,6 +61,7 @@ export function LoginPage() {
             // })
             
         }
+
         catch(err) {
             console.log('is there an error perhaps')
             console.log(err)
