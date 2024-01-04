@@ -32,7 +32,7 @@ export function LoginPage() {
             console.log(response)
             // console.log(res.success)
 
-            const data = response.json();
+            const data = await response.json();
             // .then(res => {
 
             //     console.log('checking out res...')
