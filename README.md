@@ -1,3 +1,5 @@
+[Live link](https://jasonhylam-blog-public.netlify.app/posts)
+
 This repo contains the Public Frontend app for The Odin Project Blog-API project. This may have been the most challenging project thus far, due to the scale and largely owing to many concepts being completely new to me.
 ![Blog-API-Public-Homepage](https://github.com/jasonHYLam/TOP-Blog-Api-Client/assets/105083538/118d6d02-a28b-4bc1-a230-87c88f259f98)
 ![Blog-API-Public-Postpage](https://github.com/jasonHYLam/TOP-Blog-Api-Client/assets/105083538/e71e14ab-9908-4c26-8ce9-c2c69afc9dc5)
