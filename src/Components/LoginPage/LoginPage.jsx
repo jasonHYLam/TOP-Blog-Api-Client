@@ -14,8 +14,6 @@ export function LoginPage() {
     const navigate = useNavigate();
 
     const onSubmit = async (loginInput) => {
-        console.log('checking out loginInput')
-        console.log(loginInput)
 
         try {
             console.log('seeing if try is executing')
@@ -29,9 +27,6 @@ export function LoginPage() {
                 credentials: 'include',
                 mode: 'cors',
             })
-
-            console.log('checking out res object')
-            console.log(response)
 
             const data = await response.json();
             console.log('checking out data')

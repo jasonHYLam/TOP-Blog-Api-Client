@@ -8,13 +8,18 @@ import { LoginPage } from './Components/LoginPage/LoginPage.jsx'
 import { Logout } from './Components/Logout/Logout.jsx'
 import { SignupPage, } from './Components/SignupPage/SignupPage.jsx'
 import './index.css'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <PageLayout/>,
     children: [
+      {
+        index: true,
+        element: <Navigate replace to='/posts'/>
+        
+      },
       {
         path: 'posts',
         element: <HomePage/>,

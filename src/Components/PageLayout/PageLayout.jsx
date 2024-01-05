@@ -19,8 +19,6 @@ export function PageLayout() {
             credentials: 'include',
         })
         const { user } = await response.json()
-        console.log('hopefully user exists right???')
-        console.log(user)
 
         // if they exist, setIsUserLoggedIn to true.
         if (user) {
