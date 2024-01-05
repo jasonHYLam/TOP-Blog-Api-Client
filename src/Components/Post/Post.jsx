@@ -2,7 +2,6 @@ import parse from 'html-react-parser';
 import styles from './Post.module.css';
 
 export function Post({ post }) {
-    console.log(post)
     return <>
             <article>
                 <section>

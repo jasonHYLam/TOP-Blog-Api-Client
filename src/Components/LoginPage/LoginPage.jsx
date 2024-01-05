@@ -18,6 +18,7 @@ export function LoginPage() {
         console.log(loginInput)
 
         try {
+            console.log('seeing if try is executing')
             const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/login`, {
                 method: 'POST',
                 headers: {
@@ -26,6 +27,7 @@ export function LoginPage() {
                 },
                 body: JSON.stringify(loginInput),
                 credentials: 'include',
+                mode: 'cors',
             })
 
             console.log('checking out res object')
