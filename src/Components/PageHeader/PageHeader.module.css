@@ -1,14 +1,17 @@
 .header {
-    background-color: blue;
-    justify-content: end;
-    height: 70px;
+    display: flex;
+    align-items: center;
     justify-content: center;
+    background-color: blue;
+    height: 70px;
 }
 
 .linksGroup {
     display: flex;
     flex-direction: row;
     gap: 20px;
+    align-items: center;
+    justify-content: center;
     align-items: center;
 }
 
