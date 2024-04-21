@@ -5,3 +5,12 @@
     column-gap: 50px;
     row-gap: 40px;
 }
+
+@media screen and (max-width: 400px) {
+  .postsGroup {
+    display: grid;
+    padding-inline: 10px;
+    grid-template-columns: 1fr;
+    row-gap: 40px;
+  }
+}
