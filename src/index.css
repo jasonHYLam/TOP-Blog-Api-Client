@@ -4,7 +4,7 @@
 }
 
 main {
-  text-align: center;
+  /* text-align: center; */
 }
 
 body {
@@ -18,7 +18,7 @@ a {
 }
 
 hr {
-  background-color: blue;
+  background-color: black;
   height: 2px;
   border: none;
 }
