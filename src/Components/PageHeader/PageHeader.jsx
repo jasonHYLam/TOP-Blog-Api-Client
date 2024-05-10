@@ -20,22 +20,37 @@ export function PageHeader({ isUserLoggedIn, user }) {
               {user ? (
                 <p className={styles.headerText}>Welcome, {user.username}</p>
               ) : null}
-              <Link className={styles.headerText} to={"posts"}>
+              <Link
+                className={`${styles.headerText} ${styles.link}`}
+                to={"posts"}
+              >
                 Home
               </Link>
-              <Link className={styles.headerText} to={"/logout"}>
+              <Link
+                className={`${styles.headerText} ${styles.link}`}
+                to={"/logout"}
+              >
                 Log out
               </Link>
             </>
           ) : (
             <>
-              <Link className={styles.headerText} to={"posts"}>
+              <Link
+                className={`${styles.headerText} ${styles.link}`}
+                to={"posts"}
+              >
                 Home
               </Link>
-              <Link className={styles.headerText} to={"/sign-up"}>
+              <Link
+                className={`${styles.headerText} ${styles.link}`}
+                to={"/sign-up"}
+              >
                 Sign up
               </Link>
-              <Link className={styles.headerText} to={"/login"}>
+              <Link
+                className={`${styles.headerText} ${styles.link}`}
+                to={"/login"}
+              >
                 Login
               </Link>
             </>

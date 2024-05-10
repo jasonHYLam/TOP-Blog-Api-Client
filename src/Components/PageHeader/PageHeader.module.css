@@ -24,7 +24,8 @@
 }
 
 .link {
-  transition: text-decoration 0.1s;
+  text-decoration: transparent;
+  transition: text-decoration 0.3s;
 }
 
 .link:hover {
