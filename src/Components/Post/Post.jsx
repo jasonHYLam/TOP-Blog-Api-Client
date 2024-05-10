@@ -7,7 +7,7 @@ export function Post({ post }) {
       <article>
         <section>
           <h1>{post.title}</h1>
-          <i>
+          <i className={styles.subText}>
             {post.author.username}, {post.dateFormatted}
           </i>
         </section>

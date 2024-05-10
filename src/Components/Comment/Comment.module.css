@@ -2,3 +2,13 @@
     border-left: 2px solid black;
     padding-left: 15px;
 }
+
+.subText {
+  color: var(--sub-text-color);
+  font-family: var(--mono-font);
+  font-size: 80%;
+}
+
+.author {
+  font-size: 80%;
+}

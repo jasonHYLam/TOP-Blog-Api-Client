@@ -8,8 +8,8 @@ export function PostPreview({ post }) {
         <div className={styles.postPreviewHeader}></div>
         <div>
           <h2>{post.title}</h2>
-          <p>by {post.author.username}</p>
-          <p>{post.dateFormatted}</p>
+          <p className={styles.subText}>by {post.author.username}</p>
+          <p className={styles.subText}>{post.dateFormatted}</p>
         </div>
       </Link>
     </>

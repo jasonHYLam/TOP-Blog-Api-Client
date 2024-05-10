@@ -7,6 +7,12 @@
     background-position: right bottom;
     background-repeat: no-repeat;
     box-shadow: var(--shadow-color) 0px 10px 5px -5px;
+    transition: box-shadow 0.1s;
+}
+
+.postContainer:hover {
+    box-shadow: var(--hover-color) 0px 10px 5px -5px;
+
 }
 
 .postPreviewHeader {
@@ -15,3 +21,8 @@
     background-size: 100px 100px;
 }
 
+.subText {
+  color: var(--sub-text-color);
+  font-size: 90%;
+  font-family: var(--mono-font);
+}

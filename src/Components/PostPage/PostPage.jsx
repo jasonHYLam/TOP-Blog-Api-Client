@@ -47,7 +47,7 @@ export function PostPage() {
         <hr />
 
         {!user ? (
-          <p>Please login to leave a comment.</p>
+          <p className={styles.subText}>Please login to leave a comment.</p>
         ) : (
           <>
             <CommentForm setIsChangedSubmitted={setIsChangeSubmitted} />

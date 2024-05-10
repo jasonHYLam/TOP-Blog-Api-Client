@@ -1,7 +1,15 @@
+@font-face {
+  font-family: JetBrainsMono;
+  src: url(./assets/fonts/JetBrainsMonoNL-Regular.ttf);
+}
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   --color: rgba(3, 2, 2, 0.87);
   --shadow-color: rgb(172, 172, 172);
+  --hover-color: rgb(17,17,17);
+  --sub-text-color: #383838;
+
+  --mono-font: "JetBrainsMono"
 }
 
 main {
@@ -18,12 +26,17 @@ a {
 }
 
 hr {
-  background-color: black;
-  height: 2px;
+  background-color: var(--shadow-color);
+  height: 1px;
   border: none;
 }
 
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+}
+
+.row {
+  display: flex;
+  gap: 10px;
 }
