@@ -1,5 +1,4 @@
 .postContainer {
-    /* border: 1px solid black; */
     height: 300px;
     display: flex;
     flex-direction: column;
@@ -7,12 +6,12 @@
     background-size: contain;
     background-position: right bottom;
     background-repeat: no-repeat;
+    box-shadow: var(--shadow-color) 0px 10px 5px -5px;
 }
 
 .postPreviewHeader {
     height: 80px;
     background-image: url('../../assets/shoe.png');
-    /* background-size: contain; */
     background-size: 100px 100px;
 }
 

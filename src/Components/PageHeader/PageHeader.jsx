@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./PageHeader.module.css";
 import { useEffect, useState } from "react";
+import { Loading } from "../Loading/Loading";
 
 export function PageHeader({ isUserLoggedIn, user }) {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -9,7 +10,7 @@ export function PageHeader({ isUserLoggedIn, user }) {
   }, []);
 
   return !isLoaded ? (
-    <p>Loading...</p>
+    <Loading />
   ) : (
     <>
       <header className={styles.header}>

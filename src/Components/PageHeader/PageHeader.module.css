@@ -4,6 +4,7 @@
     justify-content: center;
     background-color: black;
     height: 70px;
+    box-shadow: var(--shadow-color) 0px 1px 5px;
 }
 
 .linksGroup {
@@ -18,7 +19,5 @@
 .headerText {
     font-size: 20px;
     color: white;
-    /* text-shadow: 0 3px 0 black; */
     font-stretch: extra-expanded;
-    /* font-weight: 1000; */
 }
