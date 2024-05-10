@@ -1,53 +1,56 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { HomePage } from './Components/HomePage/HomePage.jsx'
-import { PageLayout } from './Components/PageLayout/PageLayout.jsx'
-import { PostPage } from './Components/PostPage/PostPage.jsx'
-import { ErrorPage } from './Components/ErrorPage/ErrorPage.jsx'
-import { LoginPage } from './Components/LoginPage/LoginPage.jsx'
-import { Logout } from './Components/Logout/Logout.jsx'
-import { SignupPage, } from './Components/SignupPage/SignupPage.jsx'
-import './index.css'
-import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { HomePage } from "./Components/HomePage/HomePage.jsx";
+import { PageLayout } from "./Components/PageLayout/PageLayout.jsx";
+import { PostPage } from "./Components/PostPage/PostPage.jsx";
+import { ErrorPage } from "./Components/ErrorPage/ErrorPage.jsx";
+import { LoginPage } from "./Components/LoginPage/LoginPage.jsx";
+import { Logout } from "./Components/Logout/Logout.jsx";
+import { SignupPage } from "./Components/SignupPage/SignupPage.jsx";
+import "./index.css";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Navigate,
+} from "react-router-dom";
 
 const router = createBrowserRouter([
   {
-    path: '/',
-    element: <PageLayout/>,
+    path: "/",
+    element: <PageLayout />,
     children: [
       {
         index: true,
-        element: <Navigate replace to='/posts'/>
-        
+        element: <Navigate replace to="/posts" />,
       },
       {
-        path: 'posts',
-        element: <HomePage/>,
+        path: "posts",
+        element: <HomePage />,
       },
       {
-        path: 'posts/:postid',
-        element: <PostPage/>,
+        path: "posts/:postid",
+        element: <PostPage />,
       },
 
       {
-        path: 'sign-up',
-        element: <SignupPage/>,
+        path: "sign-up",
+        element: <SignupPage />,
       },
       {
-        path: 'login',
-        element: <LoginPage/>,
+        path: "login",
+        element: <LoginPage />,
       },
       {
-        path: 'logout',
-        element: <Logout/>,
-      }
+        path: "logout",
+        element: <Logout />,
+      },
     ],
-    errorElement: <ErrorPage/>
-  }
-])
+    errorElement: <ErrorPage />,
+  },
+]);
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-      <RouterProvider router={router} />
-  </React.StrictMode>,
-)
+    <RouterProvider router={router} />
+  </React.StrictMode>
+);
